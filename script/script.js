@@ -1,47 +1,75 @@
+// 設定時間
+let totalTime = 60000 + 1000;
+let startTime = Date.now();
+let remainMSec = 0;
+let timerId;
+
+const startButton = document.querySelector('#start');
+const stopButton = document.querySelector('#stop');
+const skipButton = document.querySelector('#skip');
+
+
+// ミリ秒を00:00表記に変換する
+function formatTimeText(mSec) {
+    // ミリ秒を整数の秒数に変換する
+    const sec = Math.ceil(mSec / 1000);
+
+    // 分
+    let m = String(Math.floor(sec / 60)).padStart(2, '0');
+
+    // 秒
+    let s = String(sec - (m * 60)).padStart(2, '0');
+    return `${m}:${s}`;
+}
+
+
+// リロードする
 function doReload() {
     // reloadメソッドによりページをリロード
     window.location.reload();
 }
 
-// 非同期処理で画像データを取得
-async function getImageUrl() {
-    const image = await fetch('https://source.unsplash.com/category/featured/?nature')
-    console.log(typeof image.url);
-    return image.url;
+
+function countDown() {
+    timerId = setInterval(() => {
+        currentTime = Date.now();
+        const diff = currentTime - startTime;
+        // 設定時間から差分を引いて、残りミリ秒を計算する
+        remainMSec = totalTime - diff;
+
+        if (remainMSec <= 0) {
+            // タイマーを終了する
+            clearInterval(timerId);
+            doReload();
+        }
+
+        // ミリ秒を00:00表記に変換する
+        let label = formatTimeText(remainMSec);
+
+        document.querySelector('#log').innerHTML = label;
+    }, 1000);
 }
 
+countDown();
 
-// const totalTime = 30000 + 1000;
-const totalTime = 30000 + 1000;
-const oldTime = Date.now();
 
-const timerId = setInterval(() => {
-    const currentTime = Date.now();
-    // 差分を求める
-    const diff = currentTime - oldTime;
-    // 残りミリ秒を計算する
-    const remainMSec = totalTime - diff;
-    // ミリ秒を整数の秒数に変換する
-    const remainSec = Math.ceil(remainMSec / 1000);
+// 停止
+stopButton.addEventListener('click', () => {
+    clearInterval(timerId);
+    totalTime = remainMSec;
+    stopButton.style.display = 'none';
+    startButton.style.display = 'inline';
+});
 
-    let label = remainSec;
+// 再開
+startButton.addEventListener('click', () => {
+    startTime = Date.now();
+    countDown();
+    startButton.style.display = 'none';
+    stopButton.style.display = 'inline';
+});
 
-    // 0秒以下になったら
-    if (remainMSec <= 0) {
-        // タイマーを終了する
-        clearInterval(timerId);
-
-        // タイマー終了の文言を表示
-        label = 0;
-        doReload();
-
-        // let imgUrl = getImageUrl();
-        // console.log(imgUrl);
-
-        // イメージを挿入
-        // const img = document.querySelector('#image');
-        // img.src = imgUrl;
-    }
-
-    document.querySelector('#log').innerHTML = label;
-}, 1000);
+// スキップ
+skipButton.addEventListener('click', () => {
+    doReload();
+});

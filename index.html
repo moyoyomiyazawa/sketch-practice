@@ -12,26 +12,33 @@
 </head>
 <body class="bg-dark">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="timer mt-4">
-                <p id="log" class="display-4 text-light"></p>
+        <div class="row justify-content-end mt-3">
+            <div class="col timer mr-2">
+                <p id="log" class="h2 text-light text-right"></p>
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="sketch-image">
+            <div class="col sketch-image text-center">
                 <img id="image" src="https://source.unsplash.com/category/featured/?nature" alt="landscape" class="img-fluid" style="max-height: 80vh;">
             </div>
         </div>
-        <!-- <div class="row justify-content-center">
-            <div class="my-1">
-                <span class="">
+        <!-- 再生・停止・スキップボタン -->
+        <div class="row justify-content-center my-3" style="color: rgb(231, 231, 231);">
+            <div class="col"></div>
+            <div class="col text-center">
+                <span id="start" style="display: none;" style="cursor: pointer;">
                     <i class="fas fa-play fa-2x"></i>
                 </span>
-                <span class="">
+                <span id="stop" style="cursor: pointer;">
                     <i class="fas fa-pause fa-2x"></i>
                 </span>
             </div>
-        </div> -->
+            <div class="col">
+                <span id="skip">
+                    <i class="fas fa-forward fa-2x" style="cursor: pointer;"></i>
+                </span>
+            </div>
+        </div>
     </div>
 </body>
 </html>
