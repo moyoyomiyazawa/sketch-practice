@@ -1,5 +1,8 @@
-// 設定時間
-let totalTime = 60000 + 1000;
+// クエリパラメータから設定時間を取得
+const params = (new URL(document.location)).searchParams;
+const settingTime = params.get('st');
+
+let totalTime = parseInt(settingTime) + 1000;
 let startTime = Date.now();
 let remainMSec = 0;
 let timerId;

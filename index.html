@@ -8,35 +8,47 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-    <script src="./script/script.js" defer></script>
 </head>
 <body class="bg-dark">
     <div class="container">
-        <div class="row justify-content-end mt-3">
-            <div class="col timer mr-2">
-                <p id="log" class="h2 text-light text-right"></p>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col sketch-image text-center">
-                <img id="image" src="https://source.unsplash.com/category/featured/?nature" alt="landscape" class="img-fluid" style="max-height: 80vh;">
-            </div>
-        </div>
-        <!-- 再生・停止・スキップボタン -->
-        <div class="row justify-content-center my-3" style="color: rgb(231, 231, 231);">
-            <div class="col"></div>
-            <div class="col text-center">
-                <span id="start" style="display: none;" style="cursor: pointer;">
-                    <i class="fas fa-play fa-2x"></i>
-                </span>
-                <span id="stop" style="cursor: pointer;">
-                    <i class="fas fa-pause fa-2x"></i>
-                </span>
-            </div>
-            <div class="col">
-                <span id="skip">
-                    <i class="fas fa-forward fa-2x" style="cursor: pointer;"></i>
-                </span>
+        <div class="row justify-content-center mt-5">
+            <div class="col offset-2">
+                <div class="row">
+                    <h1 class="text-light">What time interval?</h1>
+                </div>
+                <div class="row">
+                    <div class="form-group text-light">
+                        <form id="settingTime" action="challenge.html" method="GET">
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="st" id="settingTime1" value="30000" checked>
+                                    <label class="form-check-label" for="settingTime1">
+                                        30 seconds
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="st" id="settingTime2" value="60000">
+                                    <label class="form-check-label" for="settingTime2">
+                                        1 minute
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="st" id="settingTime3" value="120000" >
+                                    <label class="form-check-label" for="settingTime3">
+                                        2 minutes
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="st" id="settingTime4" value="240000" >
+                                    <label class="form-check-label" for="settingTime4">
+                                        4 minutes
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="btn btn-light">START</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

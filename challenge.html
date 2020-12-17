@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>風景クロッキーサイト（仮）</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <script src="./script/script.js" defer></script>
+</head>
+<body class="bg-dark">
+    <div class="container">
+        <div class="row justify-content-end mt-3">
+            <div class="col timer mr-2">
+                <p id="log" class="h2 text-light text-right"></p>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col sketch-image text-center">
+                <img id="image" src="https://source.unsplash.com/category/featured/?nature" alt="landscape" class="img-fluid" style="max-height: 80vh;">
+            </div>
+        </div>
+        <!-- 再生・停止・スキップボタン -->
+        <div class="row justify-content-center my-3" style="color: rgb(231, 231, 231);">
+            <div class="col"></div>
+            <div class="col text-center">
+                <span id="start" style="display: none;" style="cursor: pointer;">
+                    <i class="fas fa-play fa-2x"></i>
+                </span>
+                <span id="stop" style="cursor: pointer;">
+                    <i class="fas fa-pause fa-2x"></i>
+                </span>
+            </div>
+            <div class="col">
+                <span id="skip">
+                    <i class="fas fa-forward fa-2x" style="cursor: pointer;"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
