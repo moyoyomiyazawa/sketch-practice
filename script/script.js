@@ -76,3 +76,28 @@ startButton.addEventListener('click', () => {
 skipButton.addEventListener('click', () => {
     doReload();
 });
+
+// キーイベントでの操作
+document.addEventListener('keydown', handleKeyDown);
+
+function handleKeyDown(event) {
+    const keyCode = event.keyCode;
+    // 右矢印キーでスキップ
+    if (keyCode === 39) {
+        doReload();
+    }
+    // スペースキーで再生・停止
+    if (keyCode === 32) {
+        if (startButton.style.display === 'none') {
+            clearInterval(timerId);
+            totalTime = remainMSec;
+            stopButton.style.display = "none";
+            startButton.style.display = "inline";
+        } else {
+            startTime = Date.now();
+            countDown();
+            startButton.style.display = "none";
+            stopButton.style.display = "inline";
+        }
+    }
+}
