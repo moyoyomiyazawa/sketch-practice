@@ -2,6 +2,11 @@
 const params = (new URL(document.location)).searchParams;
 const settingTime = params.get('st') || 30000;
 
+// クエリパラメータから検索キーワードを取得
+const keyword = params.get("kw") || 'landscape';
+const img = document.getElementById("image");
+img.setAttribute("src", "https://source.unsplash.com/featured/?" + keyword);
+
 let totalTime = parseInt(settingTime) + 1000;
 let startTime = Date.now();
 let remainMSec = 0;
